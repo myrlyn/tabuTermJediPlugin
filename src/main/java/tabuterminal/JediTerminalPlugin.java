@@ -199,7 +199,7 @@ public class JediTerminalPlugin extends tabuterminal.TabuTerminalPlugin_V1{
 		
 	}
 
-	private Map<String, Object> getJediSettings() {
+	public Map<String, Object> getJediSettings() {
 		Object j = this.getTerminalWindow().getSettings().get(JEDI_SETTINGS);
 		boolean typesafe = false;
 		if (j instanceof Map) {
