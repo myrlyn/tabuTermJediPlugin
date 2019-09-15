@@ -45,7 +45,7 @@ public class JediTerminalPlugin extends tabuterminal.TabuTerminalPlugin_V1{
 		mainFrame.add(tp);
 		mainFrame.setVisible(true);
 	}
-	public static JediTermWidget 	(String[] command, Map<String, String> environment, int initialRows, int initialColumns, boolean windowAnsiColor, 
+	public static JediTermWidget getWidget	(String[] command, Map<String, String> environment, int initialRows, int initialColumns, boolean windowAnsiColor, 
 			String dir, String chsetName, boolean isConsole, boolean isCygwin) {
 		PtyProcessBuilder procBuilder = new PtyProcessBuilder();
 		procBuilder.setCommand(command);
