@@ -3,6 +3,7 @@
 	<name>jediTerminalPlugin</name>
 	<comment></comment>
 	<projects>
+		<project>TabuTerminal</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

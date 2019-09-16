@@ -2,10 +2,15 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>tabuterminal</groupId>
-	<artifactId>jediTerminalPlutin</artifactId>
+	<groupId>jediterminalplugin</groupId>
+	<artifactId>jediTerminalPlugin</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<repositories>
+		<repository>
+			<id>bintray-jetbrains-jediterm</id>
+			<name>bintray-jediterm</name>
+			<url>https://jetbrains.bintray.com/jediterm</url>
+		</repository>
 		<repository>
 			<id>bintray-jetbrains-pty4j</id>
 			<name>bintray</name>
@@ -21,6 +26,28 @@
 					<source>12</source>
 					<target>12</target>
 				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<mainClass>jediterminalplugin.JediTerminalPlugin</mainClass>
+						</manifest>
+					</archive>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id> <!-- this is used for inheritance merges -->
+						<phase>package</phase> <!-- bind to the packaging phase -->
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
