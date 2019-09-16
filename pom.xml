@@ -81,7 +81,7 @@
 		<dependency>
 			<groupId>tabuterminal</groupId>
 			<artifactId>TabuTerminal</artifactId>
-			<version>0.1.0</version>
+			<version>0.1.1</version>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
