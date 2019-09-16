@@ -26,7 +26,7 @@ public class JediTab extends Tab {
 			env2.put(e.getKey(), e.getValue());
 		}
 		env=env2;
-		env.put("TERM", "xterm");
+		env.put("TERM", "vt100");
 		Boolean ansiColor = true;
 		Object ansiColoro = jediSettings.get("ansiColorEnabled");
 		if (ansiColoro instanceof Boolean) {
