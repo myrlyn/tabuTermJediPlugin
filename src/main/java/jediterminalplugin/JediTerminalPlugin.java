@@ -3,9 +3,11 @@ package jediterminalplugin;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.JFrame;
 
@@ -40,7 +42,7 @@ public class JediTerminalPlugin extends tabuterminal.TabuTerminalPlugin_V1 {
 	MenuItem jediTermTabItem = new MenuItem("New JediTermTab");
 	MenuItem jediTermSettingsItem = new MenuItem("JediTerm Settings");
 	Map<String, Object> jediSettings = new HashMap<>();
-	public int tabNumber = 1;
+	private int tabNumber = 1;
 
 	public JediTerminalPlugin(TabuTerminal mainTerminalWindow) {
 		super(mainTerminalWindow);
@@ -116,7 +118,7 @@ public class JediTerminalPlugin extends tabuterminal.TabuTerminalPlugin_V1 {
 	}
 
 	private void showJediTermSettingsWindow() {
-
+		this.jediSettings = this.getJediSettings();
 		Stage dialog = new Stage();
 		dialog.setTitle("JediTerm Settings");
 		VBox mainBox = new VBox();
@@ -129,11 +131,12 @@ public class JediTerminalPlugin extends tabuterminal.TabuTerminalPlugin_V1 {
 		HBox.setHgrow(cmdField, Priority.ALWAYS);
 		Object cmdo = jediSettings.get(COMMAND2);
 		String cmdVal = "cmd.exe";
-		if (cmdo instanceof String[]) {
-			String[] cmda = (String[]) cmdo;
+		if (cmdo instanceof List) {
+			@SuppressWarnings("unchecked")//all lists are objects or arutoboxable to objects
+			Object[] cmda = ((List<Object>)cmdo).toArray();
 			StringBuilder sb = new StringBuilder();
-			for (String s : cmda) {
-				sb.append(s).append(" ");
+			for (Object s : cmda) {
+				sb.append(s.toString()).append(" ");
 			}
 			cmdVal = sb.toString().trim();
 		}
