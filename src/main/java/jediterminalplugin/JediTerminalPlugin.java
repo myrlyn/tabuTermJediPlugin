@@ -257,5 +257,9 @@ public class JediTerminalPlugin extends tabuterminal.TabuTerminalPlugin_V1 {
 		settingsMenu.getItems().remove(this.jediTermSettingsItem);
 
 	}
+	@Override
+	public void saveSettings() {
+		this.getTerminalWindow().getSettings().put(JEDI_SETTINGS,jediSettings);
+	}
 
 }

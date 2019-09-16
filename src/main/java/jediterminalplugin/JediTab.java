@@ -1,5 +1,6 @@
 package jediterminalplugin;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import com.jediterm.terminal.ui.JediTermWidget;
@@ -20,6 +21,11 @@ public class JediTab extends Tab {
 			cmd = (String[]) commando;
 		}
 		Map<String, String> env = System.getenv();
+		Map<String, String> env2 = new HashMap<String,String>();
+		for (Map.Entry<String, String> e: env.entrySet()) {
+			env2.put(e.getKey(), e.getValue());
+		}
+		env=env2;
 		env.put("TERM", "xterm");
 		Boolean ansiColor = true;
 		Object ansiColoro = jediSettings.get("ansiColorEnabled");
